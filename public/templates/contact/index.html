@@ -1,0 +1,59 @@
+{% extends "_layout" %}
+
+{% block content %}
+  <div class="col-xs-12">
+    <p>Your markup for the contact page goes here.</p>
+    <h1>{{ entry.title }}</h1>
+    <section>
+      {{ entry.body}}
+    </section>
+
+    <hr>
+
+    {% macro errorList(errors) %}
+      {% if errors %}
+        {% for error in errors %}
+          {{ error }}
+        {% endfor %}
+      {% endif %}
+    {% endmacro %}
+
+    {% from _self import errorList %}
+
+    <div class="row">
+      <form method="post" action="" accept-charset="UTF-8">
+        {{ getCsrfInput() }}
+        <input type="hidden" name="action" value="contactForm/sendMessage">
+        <input type="hidden" name="redirect" value="contact/thanks">
+
+        <div class="col-xs-12 col-md-4 form-group has-feedback {% if message is defined and message and message.getErrors('fromName') %}has-error{% endif %}">
+          <label for="fromName">Your Name</label>
+          <input id="fromName" class="form-control" type="text" name="fromName" placeholder="Name" aria-describedby="nameError" value="{% if message is defined %}{{ message.fromName }}{% endif %}">
+          <span id="nameError" class="help-block">{{ message is defined and message ? errorList(message.getErrors('fromName')) }}</span>
+        </div>
+
+        <div class="col-xs-12 col-md-4 form-group has-feedback {% if message is defined and message and message.getErrors('fromEmail') %}has-error{% endif %}">
+          <label for="fromEmail">Your Email</label>
+          <input id="fromEmail" class="form-control" type="email" name="fromEmail" placeholder="Email" aria-describedby="emailError" value="{% if message is defined %}{{ message.fromEmail }}{% endif %}">
+          <span id="emailError" class="help-block">{{ message is defined and message ? errorList(message.getErrors('fromEmail')) }}</span>
+        </div>
+
+        <div class=" col-xs-12 col-md-4 form-group has-feedback {% if message is defined and message and message.getErrors('subject') %}has-error{% endif %}">
+          <label for="subject">Subject</label>
+          <input id="subject" class="form-control" type="text" name="subject" placeholder="Subject" aria-describedby="subjectError" value="{% if message is defined %}{{ message.subject }}{% endif %}">
+          <span id="subjectError" class="help-block">{{ message is defined and message ? errorList(message.getErrors('subject')) }}</span>
+        </div>
+
+        <div class=" col-xs-12 form-group has-feedback {% if message is defined and message and message.getErrors('message') %}has-error{% endif %}">
+          <label for="message">Message</label>
+          <textarea rows="10" cols="40" id="message" class="form-control" name="message" aria-describedby="messageError">{% if message is defined %}{{ message.message }}{% endif %}</textarea>
+          <span id="messageError" class="help-block">{{ message is defined and message ? errorList(message.getErrors('message')) }}</span>
+        </div>
+
+        <div class="col-xs-12 col-md-4 col-md-offset-4">
+          <input class="form-control btn btn-primary" type="submit" value="Send">
+        </div>
+      </form>
+    </div>
+  </div>
+{% endblock %}

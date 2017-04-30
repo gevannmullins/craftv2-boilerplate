@@ -1,0 +1,14 @@
+.idea
+*.iml
+.vscode
+.eslintcache
+
+node_modules
+
+#public/craft/config/db.php
+public/craft/config/license.key
+public/craft/storage/*.*
+public/dist
+public/images/uploads
+
+!public/craft/storage/.htaccess

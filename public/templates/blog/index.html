@@ -1,0 +1,12 @@
+{% extends "_layout" %}
+
+{% block content %}
+  <div class="col-xs-12">
+    <p>Your markup for the blog listing page goes here.</p>
+    <ul>
+      {% for blogPost in craft.entries.section('blog') %}
+        <li><a href="{{ blogPost.url }}">{{ blogPost.title }}</a></li>
+      {% endfor%}
+    </ul>
+  </div>
+{% endblock %}

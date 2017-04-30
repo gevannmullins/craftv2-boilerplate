@@ -1,0 +1,30 @@
+/**
+ * GLOBAL
+ */
+$font-open-sans: 'Open Sans', 'Helvetica', Arial, sans-serif;
+$font-montserrat: 'Montserrat', 'Helvetica', Arial, sans-serif;
+
+/**
+ * COLOURS
+ */
+// Primary colours
+$default-border-color: #ddd;
+
+/**
+ * BOOTSTRAP
+ *
+ * Variables we are able to overwrite can be found in `bootstrap-variables.md`.
+ */
+
+// Typography
+$font-family-sans-serif: $font-open-sans;
+$headings-font-family: $font-montserrat;
+$line-height-base: 2;
+
+// Navbar
+$navbar-height: 50px;
+$navbar-margin-bottom: 50px;
+$navbar-border-radius: 0;
+
+// Panels
+$panel-footer-bg: #fff;

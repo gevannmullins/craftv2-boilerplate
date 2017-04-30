@@ -1,0 +1,42 @@
+{
+  "extends": "stylelint-config-standard",
+  "defaultSeverity": "warning",
+  "ignoreFiles": [
+    "node_modules/**/*.css",
+    "node_modules/**/*.less",
+    "node_modules/**/*.scss",
+    "public/craft/**/*.css",
+    "public/craft/**/*.less",
+    "public/craft/**/*.scss"
+  ],
+  "rules": {
+    "number-leading-zero": "never",
+    "comment-empty-line-before": null,
+    "declaration-empty-line-before": "never",
+    "declaration-block-no-duplicate-properties": true,
+    "block-no-single-line": true,
+    "selector-pseudo-class-no-unknown": [
+      true,
+      {
+        "ignorePseudoClasses": [
+          "local"
+        ]
+      }
+    ],
+    "at-rule-empty-line-before": [
+      "always",
+      {
+        "except": [
+          "first-nested",
+          "blockless-after-same-name-blockless",
+        ],
+        "ignoreAtRules": [
+          "import"
+        ],
+        ignore: [
+          "after-comment"
+        ]
+      }
+    ]
+  }
+}

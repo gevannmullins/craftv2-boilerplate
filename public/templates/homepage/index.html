@@ -1,0 +1,30 @@
+{% extends "_layout" %}
+
+{% block content %}
+  <div class="col-xs-12">
+    <section>
+      <p>Your markup for the homepage goes here.</p>
+      <h1>{{ entry.title }}</h1>
+      {{ entry.body}}
+    </section>
+
+    <h2>Latest blog posts:</h2>
+    <div class="row">
+      {% for entry in craft.entries.section('blog').limit(2) %}
+        <div class="col-xs-12 col-md-6">
+          <div class="panel panel-default">
+            <div class="panel-heading">{{ entry.title }}</div>
+            <div class="panel-body">
+              {{ entry.introduction }}
+            </div>
+            <div class="panel-footer">
+              <a href="{{ entry.url }}">Read more</a>
+            </div>
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+
+    {% include "homepage/slider" %}
+  </div>
+{% endblock %}
